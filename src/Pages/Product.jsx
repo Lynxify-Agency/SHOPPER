@@ -8,14 +8,12 @@ const Product = () => {
   const { all_product } = useContext(ShopContext)
   const { productId } = useParams()
 
-  // ✅ Safe ID comparison (works for string & number)
-  const product = all_product.find(
-    (e) => String(e.id) === String(productId)
-  )
+ 
+  const product = all_product.find((e) => e.id == productId)
 
-  // ✅ Prevent crash if product not found
+  
   if (!product) {
-    return <div>Loading...</div>
+    return <div>Product not found</div>
   }
 
   return (
